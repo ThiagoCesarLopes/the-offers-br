@@ -25,10 +25,10 @@ profile_types = [
 
 Enum.each(profile_types, fn attrs ->
   case Repo.get_by(ProfileType, name: attrs.name) do
-    nil -> 
+    nil ->
       Repo.insert!(%ProfileType{} |> ProfileType.changeset(attrs))
       IO.puts("✅ Tipo de perfil criado: #{attrs.name}")
-    _ -> 
+    _ ->
       nil
   end
 end)
