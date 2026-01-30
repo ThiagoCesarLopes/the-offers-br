@@ -1,0 +1,166 @@
+erDiagram
+  AUTH_USERS {
+    uuid id PK
+  }
+
+  CATEGORIES {
+    uuid id PK
+    text name
+    text icon
+    boolean is_active
+    timestamptz created_at
+    timestamptz updated_at
+  }
+
+  STORES {
+    uuid id PK
+    text name
+    store_type store_type
+    text affiliate_tag
+    boolean is_active
+    timestamptz created_at
+    timestamptz updated_at
+  }
+
+  STORE_CREDENTIALS {
+    uuid id PK
+    uuid store_id UK
+    text api_key_encrypted
+    text api_endpoint
+    timestamptz created_at
+    timestamptz updated_at
+  }
+
+  OFFERS {
+    uuid id PK
+    text title
+    text image_url
+    decimal original_price
+    decimal current_price
+    int discount
+    uuid store_id FK
+    store_type store_type
+    text affiliate_link
+    uuid category_id FK
+    boolean is_hot
+    boolean is_active
+    text external_id
+    numeric commission_percentage
+    timestamptz created_at
+    timestamptz updated_at
+  }
+
+  PROFILES {
+    uuid id PK
+    text display_name
+    text avatar_url
+    text associate_id UK
+    uuid profile_type_id FK
+    text pix_key
+    text pix_type
+    text notification_email
+    text notification_whatsapp
+    timestamptz created_at
+    timestamptz updated_at
+  }
+
+  PROFILE_TYPES {
+    uuid id PK
+    text name
+    text description
+  }
+
+  USER_ROLES {
+    uuid id PK
+    uuid user_id FK
+    app_role role
+    timestamptz created_at
+  }
+
+  FAVORITES {
+    uuid id PK
+    uuid user_id FK
+    uuid offer_id FK
+    timestamptz created_at
+  }
+
+  SYNC_LOGS {
+    uuid id PK
+    uuid store_id FK
+    text status
+    text message
+    int offers_created
+    int offers_updated
+    timestamptz created_at
+  }
+
+  OFFER_CLICKS {
+    uuid id PK
+    uuid offer_id FK
+    uuid user_id FK
+    timestamptz clicked_at
+    text ip_address
+    text user_agent
+    text referrer
+    text session_id
+    boolean converted
+    numeric conversion_value
+    timestamptz conversion_at
+    text affiliate_order_id
+  }
+
+  ML_INTEGRATIONS {
+    uuid id PK
+    uuid user_id
+    text app_id
+    text client_secret
+    text access_token
+    text refresh_token
+    timestamptz token_expires_at
+    text seller_id
+    text nickname
+    boolean is_active
+    timestamptz created_at
+    timestamptz updated_at
+  }
+
+  ML_OFFER_MAPPINGS {
+    uuid id PK
+    uuid offer_id FK
+    text ml_item_id
+    timestamptz last_synced_at
+    text sync_status
+    text sync_error
+    timestamptz created_at
+    timestamptz updated_at
+  }
+
+  ASSOCIATE_SOCIAL_ACCOUNTS {
+    uuid id PK
+    text associate_id
+    uuid user_id FK
+    text platform
+    text username
+    text social_url
+    int follower_count
+    boolean is_verified
+    timestamptz created_at
+    timestamptz updated_at
+  }
+
+  AUTH_USERS ||--|| PROFILES : id
+  AUTH_USERS ||--o{ USER_ROLES : user_id
+  AUTH_USERS ||--o{ FAVORITES : user_id
+  AUTH_USERS ||--o{ OFFER_CLICKS : user_id
+  AUTH_USERS ||--o{ ASSOCIATE_SOCIAL_ACCOUNTS : user_id
+
+  PROFILE_TYPES ||--o{ PROFILES : profile_type_id
+
+  CATEGORIES ||--o{ OFFERS : category_id
+  STORES ||--o{ OFFERS : store_id
+  STORES ||--|| STORE_CREDENTIALS : store_id
+  STORES ||--o{ SYNC_LOGS : store_id
+
+  OFFERS ||--o{ FAVORITES : offer_id
+  OFFERS ||--o{ OFFER_CLICKS : offer_id
+  OFFERS ||--o{ ML_OFFER_MAPPINGS : offer_id

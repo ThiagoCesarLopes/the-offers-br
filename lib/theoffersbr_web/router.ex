@@ -17,7 +17,33 @@ defmodule TheoffersbrWeb.Router do
   scope "/", TheoffersbrWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    live "/", IndexLive
+    live "/auth", AuthLive
+    live "/preview-logo", LogoPreviewLive
+  end
+
+  scope "/admin", TheoffersbrWeb.Admin do
+    pipe_through :browser
+
+    live "/", DashboardLive
+    live "/ofertas", OfertasLive
+    live "/cliques", CliquesLive
+    live "/categorias", CategoriasLive
+    live "/lojas", LojasLive
+    live "/mercadolivre", MercadoLivreLive
+    live "/config", ConfigLive
+    live "/usuarios", UsersLive
+    live "/perfil", ProfileLive
+    live "/financeiro", AssociatesFinancialLive
+  end
+
+  scope "/associado", TheoffersbrWeb.Associate do
+    pipe_through :browser
+
+    live "/", DashboardLive
+    live "/ofertas", OffersLive
+    live "/contas", SocialAccountsLive
+    live "/settings", SettingsLive
   end
 
   # Other scopes may use custom stacks.
