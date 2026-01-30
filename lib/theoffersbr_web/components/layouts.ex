@@ -35,38 +35,191 @@ defmodule TheoffersbrWeb.Layouts do
 
   def app(assigns) do
     ~H"""
-    <header class="navbar px-4 sm:px-6 lg:px-8">
-      <div class="flex-1">
-        <a href="/" class="flex-1 flex w-fit items-center gap-2">
-          <img src={~p"/images/logo.svg"} width="36" />
-          <span class="text-sm font-semibold">v{Application.spec(:phoenix, :vsn)}</span>
-        </a>
-      </div>
-      <div class="flex-none">
-        <ul class="flex flex-column px-1 space-x-4 items-center">
-          <li>
-            <a href="https://phoenixframework.org/" class="btn btn-ghost">Website</a>
-          </li>
-          <li>
-            <a href="https://github.com/phoenixframework/phoenix" class="btn btn-ghost">GitHub</a>
-          </li>
-          <li>
-            <.theme_toggle />
-          </li>
-          <li>
-            <a href="https://hexdocs.pm/phoenix/overview.html" class="btn btn-primary">
-              Get Started <span aria-hidden="true">&rarr;</span>
+    <div class="min-h-screen flex flex-col bg-base-100">
+      <!-- Header with BrandLogo -->
+      <header class="sticky top-0 z-50 bg-base-100/95 backdrop-blur-md border-b border-base-300">
+        <div class="container mx-auto px-4">
+          <!-- Top bar -->
+          <div class="flex items-center justify-between py-3 gap-4">
+            <!-- Logo -->
+            <a href="/" class="shrink-0">
+              <.brand_logo show_tagline class="group" />
             </a>
-          </li>
-        </ul>
-      </div>
-    </header>
 
-    <main class="px-4 py-20 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-2xl space-y-4">
+            <!-- Search - Desktop -->
+            <div class="hidden md:flex flex-1 max-w-xl mx-4">
+              <div class="relative w-full">
+                <.icon name="hero-magnifying-glass" class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-base-content/50" />
+                <input
+                  type="search"
+                  placeholder="Buscar ofertas..."
+                  class="input input-bordered w-full pl-10 pr-4 py-2 rounded-full border-2 border-base-300 focus:border-primary transition-colors bg-base-200/50"
+                />
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-1">
+              <!-- Search toggle - Mobile -->
+              <button class="btn btn-ghost btn-circle md:hidden">
+                <.icon name="hero-magnifying-glass" class="h-5 w-5" />
+              </button>
+
+              <!-- Theme Toggle -->
+              <.theme_toggle />
+
+              <!-- Favorites -->
+              <button class="btn btn-ghost btn-circle">
+                <.icon name="hero-heart" class="h-5 w-5" />
+              </button>
+
+              <!-- User Menu (placeholder) -->
+              <button class="btn btn-ghost btn-circle">
+                <.icon name="hero-user" class="h-5 w-5" />
+              </button>
+
+              <!-- CTA Button -->
+              <button class="hidden lg:flex btn btn-primary rounded-full gap-2 shadow-button">
+                <.icon name="hero-bell" class="h-4 w-4" />
+                Alertas de Ofertas
+              </button>
+            </div>
+          </div>
+
+          <!-- Mobile search -->
+          <div class="md:hidden pb-3">
+            <div class="relative w-full">
+              <.icon name="hero-magnifying-glass" class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-base-content/50" />
+              <input
+                type="search"
+                placeholder="Buscar ofertas..."
+                class="input input-bordered w-full pl-10 pr-4 rounded-full border-2 border-base-300 focus:border-primary transition-colors bg-base-200/50"
+              />
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main content -->
+      <main class="flex-1">
         {render_slot(@inner_block)}
-      </div>
-    </main>
+      </main>
+
+      <!-- Footer -->
+      <footer class="bg-base-content text-base-100">
+        <!-- Newsletter section -->
+        <div class="bg-primary py-8">
+          <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+              <div class="text-center md:text-left">
+                <h3 class="text-xl font-display font-bold text-primary-content mb-1">
+                  📧 Receba as melhores ofertas!
+                </h3>
+                <p class="text-primary-content/80 text-sm">
+                  Cadastre-se e seja o primeiro a saber das promoções
+                </p>
+              </div>
+              <div class="flex gap-2 w-full md:w-auto max-w-md">
+                <input
+                  type="email"
+                  placeholder="Seu melhor e-mail"
+                  class="input w-full rounded-full border-0 text-base-content"
+                />
+                <button class="btn btn-secondary rounded-full">
+                  <.icon name="hero-paper-airplane" class="h-4 w-4" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main footer -->
+        <div class="py-12">
+          <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+              <!-- Brand -->
+              <div class="md:col-span-1">
+                <div class="flex items-center gap-2 mb-4">
+                  <.icon name="hero-tag" class="h-7 w-7 text-primary" />
+                  <span class="font-display font-bold text-xl">
+                    The Offers<sup class="text-xs font-semibold text-primary ml-0.5">Br</sup>
+                  </span>
+                </div>
+                <p class="text-sm text-base-100/70 mb-4">
+                  🏷️ Compare e compre! Encontre as melhores ofertas com descontos de até 90% nas melhores lojas.
+                </p>
+                <!-- Social links -->
+                <div class="flex gap-3">
+                  <%= for social <- [{"hero-globe-alt", "#"}, {"hero-heart", "#"}, {"hero-share", "#"}] do %>
+                    <a
+                      href={elem(social, 1)}
+                      class="w-10 h-10 rounded-full bg-base-100/10 flex items-center justify-center hover:bg-primary transition-colors"
+                    >
+                      <.icon name={elem(social, 0)} class="h-4 w-4" />
+                    </a>
+                  <% end %>
+                </div>
+              </div>
+
+              <!-- Links -->
+              <div>
+                <h4 class="font-display font-bold mb-4">Categorias</h4>
+                <ul class="space-y-2 text-sm text-base-100/70">
+                  <li><a href="#" class="hover:text-primary transition-colors">Eletrônicos</a></li>
+                  <li><a href="#" class="hover:text-primary transition-colors">Moda</a></li>
+                  <li><a href="#" class="hover:text-primary transition-colors">Casa</a></li>
+                  <li><a href="#" class="hover:text-primary transition-colors">Beleza</a></li>
+                  <li><a href="#" class="hover:text-primary transition-colors">Esportes</a></li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 class="font-display font-bold mb-4">Institucional</h4>
+                <ul class="space-y-2 text-sm text-base-100/70">
+                  <li><a href="#" class="hover:text-primary transition-colors">Sobre Nós</a></li>
+                  <li><a href="#" class="hover:text-primary transition-colors">Como Funciona</a></li>
+                  <li><a href="#" class="hover:text-primary transition-colors">Política de Privacidade</a></li>
+                  <li><a href="#" class="hover:text-primary transition-colors">Termos de Uso</a></li>
+                  <li><a href="#" class="hover:text-primary transition-colors">Contato</a></li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 class="font-display font-bold mb-4">Lojas Parceiras</h4>
+                <ul class="space-y-2 text-sm text-base-100/70">
+                  <li class="flex items-center gap-2">
+                    <span class="text-lg">🛒</span>
+                    <span>Amazon</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="text-lg">🧡</span>
+                    <span>Shopee</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="text-lg">🤝</span>
+                    <span>Mercado Livre</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="text-lg">💙</span>
+                    <span>Magazine Luiza</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-base-100/10 mt-8 pt-6 text-center">
+              <p class="text-base-100/60 text-sm mb-2">
+                © 2026 The Offers Br. Todos os direitos reservados.
+              </p>
+              <p class="text-base-100/40 text-xs">
+                The Offers Br participa de programas de afiliados. Ao comprar através dos nossos links, podemos receber uma comissão sem custo adicional para você.
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
 
     <.flash_group flash={@flash} />
     """

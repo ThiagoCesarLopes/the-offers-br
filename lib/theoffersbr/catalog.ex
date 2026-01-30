@@ -29,6 +29,9 @@ defmodule Theoffersbr.Catalog do
       Offer
       |> maybe_only_active(opts)
       |> maybe_only_hot(opts)
+      |> maybe_filter_by_category(opts)
+      |> maybe_filter_by_store_type(opts)
+      |> preload([:category, :store])
       |> order_by([o], desc: o.created_at)
 
     Repo.all(query)
@@ -77,6 +80,20 @@ defmodule Theoffersbr.Catalog do
       from o in query, where: o.is_hot == true
     else
       query
+    end
+  end
+
+  defp maybe_filter_by_category(query, opts) do
+    case Keyword.get(opts, :category_id) do
+      nil -> query
+      category_id -> from(o in query, where: o.category_id == ^category_id)
+    end
+  end
+
+  defp maybe_filter_by_store_type(query, opts) do
+    case Keyword.get(opts, :store_type) do
+      nil -> query
+      store_type -> from(o in query, where: o.store_type == ^store_type)
     end
   end
 end

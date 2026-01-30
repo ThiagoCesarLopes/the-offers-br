@@ -32,6 +32,68 @@ defmodule TheoffersbrWeb.CoreComponents do
   alias Phoenix.LiveView.JS
 
   @doc """
+  Renders the brand logo with optional tagline.
+
+  ## Examples
+
+      <.brand_logo />
+      <.brand_logo show_tagline />
+      <.brand_logo size="lg" />
+  """
+  attr :show_tagline, :boolean, default: false
+  attr :size, :string, default: "md", values: ["sm", "md", "lg"]
+  attr :class, :string, default: nil
+
+  def brand_logo(assigns) do
+    ~H"""
+    <div class={["flex items-center gap-2 group", @class]}>
+      <div class={[
+        "relative flex items-center justify-center rounded-xl shadow-lg transition-all duration-300",
+        "bg-gradient-to-br from-primary via-accent to-secondary",
+        "group-hover:shadow-xl group-hover:scale-[1.02]",
+        size_icon_wrapper(@size)
+      ]}>
+        <.icon
+          name="hero-tag"
+          class={[
+            "text-white -rotate-12",
+            size_icon(@size)
+          ]}
+        />
+        <div class="absolute -top-1 -right-1 w-3 h-3 bg-secondary rounded-full border-2 border-base-100 animate-pulse" />
+      </div>
+      <div class="flex flex-col">
+        <span class={["font-display font-bold leading-tight", size_text(@size)]}>
+          <span class="text-gradient">The</span><span class="text-base-content">Offers</span><span class="text-accent text-[10px] sm:text-xs font-semibold align-super">Br</span>
+        </span>
+        <span :if={@show_tagline} class={[
+          "text-muted-foreground tracking-wider uppercase",
+          size_tagline(@size)
+        ]}>
+          Compare e compre
+        </span>
+      </div>
+    </div>
+    """
+  end
+
+  defp size_icon_wrapper("sm"), do: "w-8 h-8"
+  defp size_icon_wrapper("md"), do: "w-10 h-10 sm:w-12 sm:h-12"
+  defp size_icon_wrapper("lg"), do: "w-12 h-12 sm:w-14 sm:h-14"
+
+  defp size_icon("sm"), do: "h-4 w-4"
+  defp size_icon("md"), do: "h-5 w-5 sm:h-6 sm:w-6"
+  defp size_icon("lg"), do: "h-6 w-6 sm:h-7 sm:w-7"
+
+  defp size_text("sm"), do: "text-lg"
+  defp size_text("md"), do: "text-xl sm:text-2xl"
+  defp size_text("lg"), do: "text-2xl sm:text-3xl"
+
+  defp size_tagline("sm"), do: "text-[9px]"
+  defp size_tagline("md"), do: "text-[10px] sm:text-xs"
+  defp size_tagline("lg"), do: "text-xs sm:text-sm"
+
+  @doc """
   Renders flash notices.
 
   ## Examples
