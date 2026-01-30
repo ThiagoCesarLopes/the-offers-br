@@ -170,8 +170,10 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
-  /* Sombras personalizadas */
+}
+
+/* Sombras personalizadas - Utilities */
+@layer utilities {
   .shadow-card {
     box-shadow: 0 4px 20px -4px oklch(65% 0.18 45 / 0.15);
   }
@@ -188,16 +190,18 @@
 /* Components - Cards de ofertas */
 @layer components {
   .card-offer {
-    @apply rounded-2xl overflow-hidden transition-all duration-300 shadow-card;
+    @apply rounded-2xl overflow-hidden transition-all duration-300;
+    box-shadow: 0 4px 20px -4px oklch(65% 0.18 45 / 0.15);
   }
   
   .card-offer:hover {
     transform: translateY(-4px);
-    @apply shadow-hover;
+    box-shadow: 0 8px 30px -4px oklch(65% 0.18 45 / 0.25);
   }
   
   .btn-cta {
-    @apply font-semibold px-6 py-3 rounded-full transition-all duration-300 shadow-button;
+    @apply font-semibold px-6 py-3 rounded-full transition-all duration-300;
+    box-shadow: 0 4px 14px 0 oklch(65% 0.18 45 / 0.3);
   }
   
   .btn-cta:hover {

@@ -73,13 +73,17 @@ defmodule TheoffersbrWeb.Layouts do
                 <.icon name="hero-heart" class="h-5 w-5" />
               </button>
 
-              <!-- User Menu (placeholder) -->
-              <button class="btn btn-ghost btn-circle">
-                <.icon name="hero-user" class="h-5 w-5" />
-              </button>
+              <!-- Login -->
+              <a href="/auth" class="hidden sm:flex btn btn-ghost rounded-full gap-2">
+                <.icon name="hero-user-circle" class="h-5 w-5" />
+                Entrar
+              </a>
+              <a href="/auth" class="btn btn-ghost btn-circle sm:hidden">
+                <.icon name="hero-user-circle" class="h-5 w-5" />
+              </a>
 
               <!-- CTA Button -->
-              <button class="hidden lg:flex btn btn-primary rounded-full gap-2 shadow-button">
+              <button class="hidden lg:flex btn btn-primary rounded-full gap-2">
                 <.icon name="hero-bell" class="h-4 w-4" />
                 Alertas de Ofertas
               </button>
@@ -106,26 +110,29 @@ defmodule TheoffersbrWeb.Layouts do
       </main>
 
       <!-- Footer -->
-      <footer class="bg-base-content text-base-100">
+      <footer class="bg-base-100 text-base-content">
         <!-- Newsletter section -->
         <div class="bg-primary py-8">
           <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
               <div class="text-center md:text-left">
-                <h3 class="text-xl font-display font-bold text-primary-content mb-1">
-                  📧 Receba as melhores ofertas!
-                </h3>
-                <p class="text-primary-content/80 text-sm">
+                <div class="flex items-center gap-2 mb-2 justify-center md:justify-start">
+                  <.icon name="hero-envelope" class="h-6 w-6 text-base-content" />
+                  <h3 class="text-xl font-display font-bold text-base-content">
+                    Receba as melhores ofertas!
+                  </h3>
+                </div>
+                <p class="text-base-content/80 text-sm">
                   Cadastre-se e seja o primeiro a saber das promoções
                 </p>
               </div>
-              <div class="flex gap-2 w-full md:w-auto max-w-md">
+              <div class="flex gap-3 w-full md:w-auto max-w-sm">
                 <input
                   type="email"
                   placeholder="Seu melhor e-mail"
-                  class="input w-full rounded-full border-0 text-base-content"
+                  class="input w-full rounded-full border-0 bg-white text-base-content placeholder:text-[#6b6b6b] h-10 px-4"
                 />
-                <button class="btn btn-secondary rounded-full">
+                <button class="btn btn-success rounded-full w-10 h-10 min-h-0 p-0 text-white">
                   <.icon name="hero-paper-airplane" class="h-4 w-4" />
                 </button>
               </div>
@@ -134,88 +141,96 @@ defmodule TheoffersbrWeb.Layouts do
         </div>
 
         <!-- Main footer -->
-        <div class="py-12">
+        <div class="py-12 border-t border-base-300">
           <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
               <!-- Brand -->
-              <div class="md:col-span-1">
-                <div class="flex items-center gap-2 mb-4">
-                  <.icon name="hero-tag" class="h-7 w-7 text-primary" />
-                  <span class="font-display font-bold text-xl">
-                    The Offers<sup class="text-xs font-semibold text-primary ml-0.5">Br</sup>
-                  </span>
+              <div>
+                <div class="inline-flex items-center gap-1 mb-5">
+                  <span class="text-2xl">🏷️</span>
+                  <span class="font-display font-bold text-lg">The Offers<span class="text-primary">br</span></span>
                 </div>
-                <p class="text-sm text-base-100/70 mb-4">
-                  🏷️ Compare e compre! Encontre as melhores ofertas com descontos de até 90% nas melhores lojas.
+                <p class="text-sm text-base-content/70 mb-5">
+                  Compare e compre! Encontre as melhores ofertas com descontos de até 90% nas melhores lojas.
                 </p>
                 <!-- Social links -->
                 <div class="flex gap-3">
-                  <%= for social <- [{"hero-globe-alt", "#"}, {"hero-heart", "#"}, {"hero-share", "#"}] do %>
-                    <a
-                      href={elem(social, 1)}
-                      class="w-10 h-10 rounded-full bg-base-100/10 flex items-center justify-center hover:bg-primary transition-colors"
-                    >
-                      <.icon name={elem(social, 0)} class="h-4 w-4" />
-                    </a>
-                  <% end %>
+                  <a href="https://www.facebook.com/" target="_blank" class="w-9 h-9 rounded-full bg-base-200 flex items-center justify-center hover:bg-primary hover:text-primary-content transition-colors font-bold text-base">
+                    f
+                  </a>
+                  <a href="https://www.instagram.com/" target="_blank" class="w-9 h-9 rounded-full bg-base-200 flex items-center justify-center hover:bg-primary hover:text-primary-content transition-colors">
+                    <.icon name="hero-camera" class="h-5 w-5" />
+                  </a>
+                  <a href="https://twitter.com/" target="_blank" class="w-9 h-9 rounded-full bg-base-200 flex items-center justify-center hover:bg-primary hover:text-primary-content transition-colors">
+                    <.icon name="hero-arrow-top-right-on-square" class="h-5 w-5" />
+                  </a>
+                  <a href="https://www.youtube.com/" target="_blank" class="w-9 h-9 rounded-full bg-base-200 flex items-center justify-center hover:bg-primary hover:text-primary-content transition-colors">
+                    <.icon name="hero-play" class="h-5 w-5" />
+                  </a>
                 </div>
               </div>
 
-              <!-- Links -->
+              <!-- Categorias -->
               <div>
-                <h4 class="font-display font-bold mb-4">Categorias</h4>
-                <ul class="space-y-2 text-sm text-base-100/70">
-                  <li><a href="#" class="hover:text-primary transition-colors">Eletrônicos</a></li>
-                  <li><a href="#" class="hover:text-primary transition-colors">Moda</a></li>
-                  <li><a href="#" class="hover:text-primary transition-colors">Casa</a></li>
-                  <li><a href="#" class="hover:text-primary transition-colors">Beleza</a></li>
-                  <li><a href="#" class="hover:text-primary transition-colors">Esportes</a></li>
+                <h4 class="font-display font-bold mb-5 text-base-content">Categorias</h4>
+                <ul class="space-y-3 text-sm text-base-content/70">
+                  <li><a href="/?category=eletronicos" class="hover:text-primary transition-colors">Eletrônicos</a></li>
+                  <li><a href="/?category=moda" class="hover:text-primary transition-colors">Moda</a></li>
+                  <li><a href="/?category=casa" class="hover:text-primary transition-colors">Casa</a></li>
+                  <li><a href="/?category=beleza" class="hover:text-primary transition-colors">Beleza</a></li>
+                  <li><a href="/?category=esportes" class="hover:text-primary transition-colors">Esportes</a></li>
                 </ul>
               </div>
 
+              <!-- Institucional -->
               <div>
-                <h4 class="font-display font-bold mb-4">Institucional</h4>
-                <ul class="space-y-2 text-sm text-base-100/70">
-                  <li><a href="#" class="hover:text-primary transition-colors">Sobre Nós</a></li>
-                  <li><a href="#" class="hover:text-primary transition-colors">Como Funciona</a></li>
-                  <li><a href="#" class="hover:text-primary transition-colors">Política de Privacidade</a></li>
-                  <li><a href="#" class="hover:text-primary transition-colors">Termos de Uso</a></li>
-                  <li><a href="#" class="hover:text-primary transition-colors">Contato</a></li>
+                <h4 class="font-display font-bold mb-5 text-base-content">Institucional</h4>
+                <ul class="space-y-3 text-sm text-base-content/70">
+                  <li><a href="/about" target="_blank" class="hover:text-primary transition-colors">Sobre Nós</a></li>
+                  <li><a href="/how-it-works" target="_blank" class="hover:text-primary transition-colors">Como Funciona</a></li>
+                  <li><a href="/privacy" target="_blank" class="hover:text-primary transition-colors">Política de Privacidade</a></li>
+                  <li><a href="/terms" target="_blank" class="hover:text-primary transition-colors">Termos de Uso</a></li>
+                  <li><a href="/contact" target="_blank" class="hover:text-primary transition-colors">Contato</a></li>
                 </ul>
               </div>
 
+              <!-- Lojas Parceiras -->
               <div>
-                <h4 class="font-display font-bold mb-4">Lojas Parceiras</h4>
-                <ul class="space-y-2 text-sm text-base-100/70">
-                  <li class="flex items-center gap-2">
-                    <span class="text-lg">🛒</span>
-                    <span>Amazon</span>
-                  </li>
-                  <li class="flex items-center gap-2">
-                    <span class="text-lg">🧡</span>
-                    <span>Shopee</span>
-                  </li>
-                  <li class="flex items-center gap-2">
-                    <span class="text-lg">🤝</span>
-                    <span>Mercado Livre</span>
-                  </li>
-                  <li class="flex items-center gap-2">
-                    <span class="text-lg">💙</span>
-                    <span>Magazine Luiza</span>
-                  </li>
-                </ul>
+                <h4 class="font-display font-bold mb-5 text-base-content">Lojas Parceiras</h4>
+                <div class="flex flex-wrap gap-3 text-xs">
+                  <span class="inline-flex items-center gap-1 px-3 py-1 bg-base-200 rounded-full hover:bg-primary hover:text-primary-content transition-colors">🛒 Amazon</span>
+                  <span class="inline-flex items-center gap-1 px-3 py-1 bg-base-200 rounded-full hover:bg-primary hover:text-primary-content transition-colors">🧡 Shopee</span>
+                  <span class="inline-flex items-center gap-1 px-3 py-1 bg-base-200 rounded-full hover:bg-primary hover:text-primary-content transition-colors">🤝 Mercado Livre</span>
+                  <span class="inline-flex items-center gap-1 px-3 py-1 bg-base-200 rounded-full hover:bg-primary hover:text-primary-content transition-colors">💙 Magazine Luiza</span>
+                  <span class="inline-flex items-center gap-1 px-3 py-1 bg-base-200 rounded-full hover:bg-primary hover:text-primary-content transition-colors">🏠 Casas Bahia</span>
+                  <span class="inline-flex items-center gap-1 px-3 py-1 bg-base-200 rounded-full hover:bg-primary hover:text-primary-content transition-colors">📦 AliExpress</span>
+                </div>
               </div>
             </div>
+          </div>
+        </div>
 
-            <!-- Copyright -->
-            <div class="border-t border-base-100/10 mt-8 pt-6 text-center">
-              <p class="text-base-100/60 text-sm mb-2">
-                © 2026 The Offers Br. Todos os direitos reservados.
-              </p>
-              <p class="text-base-100/40 text-xs">
-                The Offers Br participa de programas de afiliados. Ao comprar através dos nossos links, podemos receber uma comissão sem custo adicional para você.
+        <!-- Bottom bar -->
+        <div class="border-t border-base-300 py-4">
+          <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-2 text-sm text-base-content/60">
+              <p>© <%= Date.utc_today().year %> The Offers Br. Todos os direitos reservados.</p>
+              <p class="flex items-center gap-1">
+                Feito com
+                <.icon name="hero-heart" class="h-3 w-3 text-error" />
+                para economizadores
               </p>
             </div>
+          </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="bg-base-200/30 py-3">
+          <div class="container mx-auto px-4">
+            <p class="text-xs text-center text-base-content/50">
+              <.icon name="hero-shopping-bag" class="inline h-3 w-3 mr-1" />
+              The Offers Br participa de programas de afiliados. Ao comprar através dos nossos links, podemos receber uma comissão sem custo adicional para você.
+            </p>
           </div>
         </div>
       </footer>
@@ -276,10 +291,10 @@ defmodule TheoffersbrWeb.Layouts do
   def theme_toggle(assigns) do
     ~H"""
     <div class="card relative flex flex-row items-center border-2 border-base-300 bg-base-300 rounded-full">
-      <div class="absolute w-1/3 h-full rounded-full border-1 border-base-200 bg-base-100 brightness-200 left-0 [[data-theme=light]_&]:left-1/3 [[data-theme=dark]_&]:left-2/3 transition-[left]" />
+      <div class="absolute w-1/3 h-full rounded-full border-1 border-base-200 bg-base-100 brightness-200 left-0 [[data-theme=light]_&]:left-1/3 [[data-theme=dark]_&]:left-2/3 transition-[left] pointer-events-none" />
 
       <button
-        class="flex p-2 cursor-pointer w-1/3"
+        class="flex p-2 cursor-pointer w-1/3 relative z-10"
         phx-click={JS.dispatch("phx:set-theme")}
         data-phx-theme="system"
       >
@@ -287,7 +302,7 @@ defmodule TheoffersbrWeb.Layouts do
       </button>
 
       <button
-        class="flex p-2 cursor-pointer w-1/3"
+        class="flex p-2 cursor-pointer w-1/3 relative z-10"
         phx-click={JS.dispatch("phx:set-theme")}
         data-phx-theme="light"
       >
@@ -295,7 +310,7 @@ defmodule TheoffersbrWeb.Layouts do
       </button>
 
       <button
-        class="flex p-2 cursor-pointer w-1/3"
+        class="flex p-2 cursor-pointer w-1/3 relative z-10"
         phx-click={JS.dispatch("phx:set-theme")}
         data-phx-theme="dark"
       >
