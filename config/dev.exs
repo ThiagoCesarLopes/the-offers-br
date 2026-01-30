@@ -57,15 +57,15 @@ config :theoffersbr, TheoffersbrWeb.Endpoint,
 config :theoffersbr, TheoffersbrWeb.Endpoint,
   live_reload: [
     web_console_logger: true,
-    patterns: [
-      # Static assets, except user uploads
-      ~r"priv/static/(?!uploads/).*\.(js|css|png|jpeg|jpg|gif|svg)$"E,
-      # Gettext translations
-      ~r"priv/gettext/.*\.po$"E,
-      # Router, Controllers, LiveViews and LiveComponents
-      ~r"lib/theoffersbr_web/router\.ex$"E,
-      ~r"lib/theoffersbr_web/(controllers|live|components)/.*\.(ex|heex)$"E
-    ]
+   patterns: [
+        # Static assets, except user uploads
+        ~r"priv/static/(?!uploads/).*\.(js|css|png|jpeg|jpg|gif|svg)$",
+        # Gettext translations
+        ~r"priv/gettext/.*\.po$",
+        # Router, Controllers, LiveViews and LiveComponents
+        ~r"lib/theoffersbr_web/router\.ex$",
+        ~r"lib/theoffersbr_web/(controllers|live|components)/.*\.(ex|heex)$"
+      ]
   ]
 
 # Enable dev routes for dashboard and mailbox

@@ -20,6 +20,7 @@ defmodule Theoffersbr.Accounts.Profile do
     field :notification_whatsapp, :string
     field :email, :string
     field :first_login, :boolean
+    field :password_hash, :string
 
     belongs_to :profile_type, ProfileType
 
@@ -41,6 +42,7 @@ defmodule Theoffersbr.Accounts.Profile do
       :notification_whatsapp,
       :email,
       :first_login,
+      :password_hash,
       :profile_type_id
     ])
     |> validate_required([:id])
