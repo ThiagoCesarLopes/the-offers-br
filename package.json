@@ -1,0 +1,10 @@
+{
+  "name": "theoffersbr",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The Offers BR - Phoenix application",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ThiagoCesarLopes/the-offers-br"
+  }
+}
