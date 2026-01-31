@@ -181,7 +181,7 @@ defmodule TheOffersBrWeb.IndexLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={%{}}>
+    <TheOffersBrWeb.Layouts.app flash={%{}}>
       <div class="min-h-screen">
         <!-- White Divider Line -->
         <div class="h-px bg-base-300"></div>

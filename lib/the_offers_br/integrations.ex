@@ -1,7 +1,7 @@
 defmodule Theoffersbr.Integrations do
   import Ecto.Query, warn: false
 
-  alias Theoffersbr.Repo
+  alias TheOffersBr.Repo
   alias Theoffersbr.Integrations.{MLIntegration, MLOfferMapping}
 
   def list_ml_integrations do

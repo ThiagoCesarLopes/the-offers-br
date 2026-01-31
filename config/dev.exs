@@ -55,7 +55,7 @@ config :the_offers_br, TheOffersBrWeb.Endpoint,
 # different ports.
 
 # Reload browser tabs when matching files change.
-config :theoffersbr, TheOffersBrWeb.Endpoint,
+config :the_offers_br, TheOffersBrWeb.Endpoint,
   live_reload: [
     web_console_logger: true,
    patterns: [
@@ -70,7 +70,7 @@ config :theoffersbr, TheOffersBrWeb.Endpoint,
   ]
 
 # Enable dev routes for dashboard and mailbox
-config :theoffersbr, dev_routes: true
+config :the_offers_br, dev_routes: true
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :default_formatter, format: "[$level] $message\n"
@@ -83,7 +83,7 @@ config :phoenix, :stacktrace_depth, 20
 config :phoenix, :plug_init_mode, :runtime
 
 # Disable migration check in development
-config :theoffersbr, TheOffersBrWeb.Endpoint,
+config :the_offers_br, TheOffersBrWeb.Endpoint,
   check_origin: false
 
 config :phoenix_live_view,

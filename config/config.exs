@@ -14,7 +14,7 @@ config :the_offers_br,
   generators: [timestamp_type: :utc_datetime]
 
 # Configure the endpoint
-config :theoffersbr, TheOffersBrWeb.Endpoint,
+config :the_offers_br, TheOffersBrWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
@@ -31,7 +31,7 @@ config :theoffersbr, TheOffersBrWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :theoffersbr, Theoffersbr.Mailer, adapter: Swoosh.Adapters.Local
+config :the_offers_br, TheOffersBr.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)
 

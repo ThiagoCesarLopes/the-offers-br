@@ -1,7 +1,7 @@
 defmodule Theoffersbr.Analytics do
   import Ecto.Query, warn: false
 
-  alias Theoffersbr.Repo
+  alias TheOffersBr.Repo
   alias Theoffersbr.Catalog.OfferClick
 
   def list_offer_clicks do

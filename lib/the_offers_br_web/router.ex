@@ -12,6 +12,8 @@ defmodule TheOffersBrWeb.Router do
   scope "/", TheOffersBrWeb do
     pipe_through :browser
 
-    live "/", PageLive, :home
+    live_session :default do
+      live "/", PageLive, :home
+    end
   end
 end

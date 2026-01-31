@@ -1,7 +1,7 @@
 defmodule Theoffersbr.Catalog do
   import Ecto.Query, warn: false
 
-  alias Theoffersbr.Repo
+  alias TheOffersBr.Repo
   alias Theoffersbr.Catalog.{Category, Offer, Store, Favorite, OfferClick, SyncLog}
 
   def list_categories do

@@ -1,7 +1,7 @@
 defmodule Theoffersbr.Accounts do
   import Ecto.Query, warn: false
 
-  alias Theoffersbr.Repo
+  alias TheOffersBr.Repo
   alias Theoffersbr.Accounts.{Profile, ProfileType, UserRole, AssociateSocialAccount}
 
   def list_profiles do
