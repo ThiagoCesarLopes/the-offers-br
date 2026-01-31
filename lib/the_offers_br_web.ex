@@ -29,6 +29,13 @@ defmodule TheOffersBrWeb do
     end
   end
 
+  def channel do
+    quote do
+      use Phoenix.Channel
+      import TheOffersBrWeb.Gettext
+    end
+  end
+
   defp html_helpers do
     quote do
       use Phoenix.HTML
@@ -38,5 +45,9 @@ defmodule TheOffersBrWeb do
       import TheOffersBrWeb.Gettext
       alias TheOffersBrWeb.Router.Helpers, as: Routes
     end
+  end
+
+  defmacro __using__(which) when is_atom(which) do
+    apply(__MODULE__, which, [])
   end
 end
