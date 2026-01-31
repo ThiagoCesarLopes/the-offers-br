@@ -1,4 +1,21 @@
 defmodule TheOffersBrWeb do
+  @moduledoc """
+  The entrypoint for defining the web interface.
+  """
+
+  def static_paths do
+    ~w(assets fonts images favicon.ico robots.txt)
+  end
+
+  def router do
+    quote do
+      use Phoenix.Router
+      import Plug.Conn
+      import Phoenix.Controller
+      import Phoenix.LiveView.Router
+    end
+  end
+
   def controller do
     quote do
       use Phoenix.Controller,
@@ -11,21 +28,25 @@ defmodule TheOffersBrWeb do
     end
   end
 
+  def html do
+    quote do
+      use Phoenix.Component
+
+      import Phoenix.Component
+      import Phoenix.LiveView.Helpers
+      import TheOffersBrWeb.Icon
+      import TheOffersBrWeb.BrandLogo
+      import TheOffersBrWeb.Gettext
+      alias TheOffersBrWeb.Router.Helpers, as: Routes
+    end
+  end
+
   def live_view do
     quote do
       use Phoenix.LiveView,
         layout: {TheOffersBrWeb.Layouts, :app}
 
-      unquote(html_helpers())
-    end
-  end
-
-  def router do
-    quote do
-      use Phoenix.Router
-      import Plug.Conn
-      import Phoenix.Controller
-      import Phoenix.LiveView.Router
+      unquote(html())
     end
   end
 
@@ -33,16 +54,6 @@ defmodule TheOffersBrWeb do
     quote do
       use Phoenix.Channel
       import TheOffersBrWeb.Gettext
-    end
-  end
-
-  defp html_helpers do
-    quote do
-      import Phoenix.LiveView.Helpers
-      import Phoenix.Component
-
-      import TheOffersBrWeb.Gettext
-      alias TheOffersBrWeb.Router.Helpers, as: Routes
     end
   end
 
