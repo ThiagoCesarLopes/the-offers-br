@@ -62,6 +62,18 @@ config :phoenix, :json_library, Jason
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
+
 import_config "#{config_env()}.exs"
 config :phoenix_live_view, :colocated_js,
   disable_symlink_warning: true
+
+  config :the_offers_br, TheOffersBrWeb.Endpoint,
+  url: [host: "localhost"],
+  secret_key_base: "CHANGE_ME",
+  render_errors: [
+    formats: [html: TheOffersBrWeb.ErrorHTML, json: TheOffersBrWeb.ErrorJSON],
+    layout: false
+  ],
+  pubsub_server: TheOffersBr.PubSub,
+  live_view: [signing_salt: "CHANGE_ME"]
+

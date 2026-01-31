@@ -95,3 +95,10 @@ config :phoenix_live_view,
 
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false
+
+config :the_offers_br, TheOffersBrWeb.Endpoint,
+  http: [ip: {127, 0, 0, 1}, port: 4000],
+  code_reloader: true,
+  debug_errors: true,
+  secret_key_base: "CHANGE_ME",
+  watchers: []
