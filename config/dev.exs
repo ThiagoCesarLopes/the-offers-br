@@ -1,11 +1,12 @@
+
 import Config
 
 # Configure your database
-config :theoffersbr, Theoffersbr.Repo,
+config :the_offers_br, TheOffersBr.Repo,
   username: System.get_env("POSTGRES_USER") || "postgres",
   password: System.get_env("POSTGRES_PASSWORD") || "postgres",
   hostname: System.get_env("POSTGRES_HOST") || "localhost",
-  database: System.get_env("POSTGRES_DB") || "theoffersbr_dev",
+  database: System.get_env("POSTGRES_DB") || "the_offers_br_dev",
   port: String.to_integer(System.get_env("POSTGRES_PORT") || "5432"),
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
@@ -17,7 +18,7 @@ config :theoffersbr, Theoffersbr.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we can use it
 # to bundle .js and .css sources.
-config :theoffersbr, TheOffersBrWeb.Endpoint,
+config :the_offers_br, TheOffersBrWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
   http: [ip: {127, 0, 0, 1}],
@@ -26,8 +27,8 @@ config :theoffersbr, TheOffersBrWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "MZOnuVKAEyj1h9IincDn6QRctTmzyF77tsakRtYhiNg5sqDMDDY4yEWp1s57uPyu",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:theoffersbr, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:theoffersbr, ~w(--watch)]}
+    esbuild: {Esbuild, :install_and_run, [:the_offers_br, ~w(--sourcemap=inline --watch)]},
+    tailwind: {Tailwind, :install_and_run, [:the_offers_br, ~w(--watch)]}
   ]
 
 # ## SSL Support
