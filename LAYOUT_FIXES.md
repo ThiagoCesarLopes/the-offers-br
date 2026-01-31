@@ -6,7 +6,7 @@ Refatoração completa do layout do projeto theoffersbr para alinhamento visual 
 
 ## Mudanças Realizadas
 
-### 1. **Offer Cards** (`lib/theoffersbr_web/live/index_live.ex`)
+### 1. **Offer Cards** (`lib/the_offers_br_web/live/index_live.ex`)
 - ✅ Removido DaisyUI `card`, `card-body`, `card-title` 
 - ✅ Implementado Tailwind puro: `rounded-2xl overflow-hidden border border-base-300`
 - ✅ Estrutura correta: `group relative flex flex-col h-full`
@@ -46,7 +46,7 @@ Refatoração completa do layout do projeto theoffersbr para alinhamento visual 
 
 ## Arquivos Modificados
 
-1. **lib/theoffersbr_web/live/index_live.ex**
+1. **lib/the_offers_br_web/live/index_live.ex**
    - Refactored offer cards structure
    - Updated compare panel styling
    - Simplified share modal

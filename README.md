@@ -27,7 +27,7 @@ theoffersbr/
 │   │   └── integrations/          # Integration schemas
 │   │       ├── ml_integration.ex  # Mercado Livre API config
 │   │       └── ml_offer_mapping.ex # ML sync status
-│   └── theoffersbr_web/           # Web interface (LiveView)
+│   └── the_offers_br_web/           # Web interface (LiveView)
 │       ├── live/
 │       │   ├── index_live.ex      # Home page - category & offer listing
 │       │   ├── auth_live.ex       # Authentication flow
@@ -196,7 +196,7 @@ Code is organized into **business domain contexts**:
 Each context has:
 - Module file: `lib/theoffersbr/context.ex` with public functions
 - Schemas: `lib/theoffersbr/context/*.ex` for each entity
-- Web layer: `lib/theoffersbr_web/live/*` for LiveView components
+- Web layer: `lib/the_offers_br_web/live/*` for LiveView components
 
 ## Configuration
 

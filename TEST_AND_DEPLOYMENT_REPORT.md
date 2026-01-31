@@ -88,7 +88,7 @@ Finished in 0.4 seconds (0.2s async, 0.2s sync)
 
 ### REST API (Disponível)
 - ✅ Phoenix Endpoints estruturados
-- ✅ Rotas configuradas em `lib/theoffersbr_web/router.ex`
+- ✅ Rotas configuradas em `lib/the_offers_br_web/router.ex`
 
 ---
 

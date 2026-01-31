@@ -17,7 +17,7 @@ config :theoffersbr, Theoffersbr.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we can use it
 # to bundle .js and .css sources.
-config :theoffersbr, TheoffersbrWeb.Endpoint,
+config :theoffersbr, TheOffersBrWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
   http: [ip: {127, 0, 0, 1}],
@@ -54,7 +54,7 @@ config :theoffersbr, TheoffersbrWeb.Endpoint,
 # different ports.
 
 # Reload browser tabs when matching files change.
-config :theoffersbr, TheoffersbrWeb.Endpoint,
+config :theoffersbr, TheOffersBrWeb.Endpoint,
   live_reload: [
     web_console_logger: true,
    patterns: [
@@ -63,8 +63,8 @@ config :theoffersbr, TheoffersbrWeb.Endpoint,
         # Gettext translations
         ~r"priv/gettext/.*\.po$",
         # Router, Controllers, LiveViews and LiveComponents
-        ~r"lib/theoffersbr_web/router\.ex$",
-        ~r"lib/theoffersbr_web/(controllers|live|components)/.*\.(ex|heex)$"
+        ~r"lib/the_offers_br_web/router\.ex$",
+        ~r"lib/the_offers_br_web/(controllers|live|components)/.*\.(ex|heex)$"
       ]
   ]
 
@@ -82,7 +82,7 @@ config :phoenix, :stacktrace_depth, 20
 config :phoenix, :plug_init_mode, :runtime
 
 # Disable migration check in development
-config :theoffersbr, TheoffersbrWeb.Endpoint,
+config :theoffersbr, TheOffersBrWeb.Endpoint,
   check_origin: false
 
 config :phoenix_live_view,

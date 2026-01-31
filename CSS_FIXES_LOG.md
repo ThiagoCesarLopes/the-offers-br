@@ -9,7 +9,7 @@ Replicar EXATAMENTE o CSS, cores e layout do projeto referência (localhost:8080
 ### Alterações Aplicadas
 
 #### 1. Footer - EXATAMENTE Como Referência ✅
-**Arquivo**: `lib/theoffersbr_web/components/layouts.ex`
+**Arquivo**: `lib/the_offers_br_web/components/layouts.ex`
 
 **Aplicado**:
 ```heex
@@ -30,7 +30,7 @@ Todos os textos e elementos dentro do footer também foram alinhados:
 - Disclaimer: `bg-base-100/5` (background muito claro)
 
 #### 2. Banner Hero Carousel - COMO REFERÊNCIA ✅
-**Arquivo**: `lib/theoffersbr_web/live/index_live.ex`
+**Arquivo**: `lib/the_offers_br_web/live/index_live.ex`
 
 **Implementado 3 Slides Exatamente Como Referência**:
 

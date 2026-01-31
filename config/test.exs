@@ -15,7 +15,7 @@ config :theoffersbr, Theoffersbr.Repo,
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :theoffersbr, TheoffersbrWeb.Endpoint,
+config :theoffersbr, TheOffersBrWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
   secret_key_base: "RDdZQqFq2u2eVFfKpaWf3WtY7nU4Pi7DkrcATD8cOjCByNSAY7WM3XpxMYL6aM3m",
   server: false

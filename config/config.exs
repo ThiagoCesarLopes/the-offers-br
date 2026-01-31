@@ -12,11 +12,11 @@ config :theoffersbr,
   generators: [timestamp_type: :utc_datetime]
 
 # Configure the endpoint
-config :theoffersbr, TheoffersbrWeb.Endpoint,
+config :theoffersbr, TheOffersBrWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
-    formats: [html: TheoffersbrWeb.ErrorHTML, json: TheoffersbrWeb.ErrorJSON],
+    formats: [html: TheOffersBrWeb.ErrorHTML, json: TheOffersBrWeb.ErrorJSON],
     layout: false
   ],
   pubsub_server: Theoffersbr.PubSub,
