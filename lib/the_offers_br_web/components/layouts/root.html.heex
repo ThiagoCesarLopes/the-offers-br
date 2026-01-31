@@ -7,10 +7,9 @@
     <.live_title default="Theoffersbr" suffix=" · Phoenix Framework">
       {assigns[:page_title]}
     </.live_title>
-    <link phx-track-static rel="stylesheet" href={~p"/assets/css/app.css"} />
-    <script defer phx-track-static type="text/javascript" src={~p"/assets/js/app.js"}>
-    </script>
-    <script>
+   <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/app.css")} />
+   <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/js/app.js")}></script>
+   <script>
       (() => {
         const setTheme = (theme) => {
           if (theme === "system") {
