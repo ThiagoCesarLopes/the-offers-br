@@ -29,47 +29,35 @@ defmodule TheOffersBrWeb do
   end
 
   def html do
-  quote do
-    use Phoenix.Component
+    quote do
+      use Phoenix.Component
 
-    # Core HEEx / Components
-    import Phoenix.Component
-    import Phoenix.LiveView.Helpers
+      # Core HEEx / Components
+      import Phoenix.Component
+      import Phoenix.LiveView
 
-    # JS helpers (show/hide, etc)
-    alias Phoenix.LiveView.JS
+      # JS helpers
+      alias Phoenix.LiveView.JS
 
-    # Flash helpers
-    import Phoenix.LiveView
+      # Gettext
+      import TheOffersBrWeb.Gettext
 
-    # Routing (~p sigil)
-    import Phoenix.VerifiedRoutes
-    @endpoint TheOffersBrWeb.Endpoint
-    @router TheOffersBrWeb.Router
-    @statics TheOffersBrWeb.static_paths()
+      # Project components
+      import TheOffersBrWeb.Icon
+      import TheOffersBrWeb.BrandLogo
 
-    # Gettext
-    import TheOffersBrWeb.Gettext
-
-    alias TheOffersBrWeb.Router.Helpers, as: Routes
+      alias TheOffersBrWeb.Router.Helpers, as: Routes
+    end
   end
-end
 
+  def live_view do
+    quote do
+      use Phoenix.LiveView,
+        layout: {TheOffersBrWeb.Layouts, :app}
 
-def live_view do
-  quote do
-    use Phoenix.LiveView,
-      layout: {TheOffersBrWeb.Layouts, :app}
-
-    # HTML / HEEx helpers
-    unquote(html())
-
-    # Componentes globais
-    import TheOffersBrWeb.Icon
-    import TheOffersBrWeb.BrandLogo
+      unquote(html())
+    end
   end
-end
-
 
   def channel do
     quote do
