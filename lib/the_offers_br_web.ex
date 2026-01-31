@@ -35,7 +35,7 @@ defmodule TheOffersBrWeb do
       # Core HEEx / Components
       import Phoenix.Component
       import Phoenix.LiveView
-
+      import TheOffersBrWeb.CoreComponents
       # JS helpers
       alias Phoenix.LiveView.JS
 
