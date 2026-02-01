@@ -1,7 +1,7 @@
 # Script for populating the database.
 # Run with: mix run priv/repo/seeds.exs
 
-alias Theoffersbr.{Repo, Accounts}
+alias TheOffersBr.{Repo, Accounts}
 alias Theoffersbr.Catalog.{Category, Store, Offer}
 alias Theoffersbr.Accounts.{Profile, ProfileType, UserRole}
 

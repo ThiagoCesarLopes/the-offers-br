@@ -40,6 +40,16 @@
 				"$elixir-mix-test"
 			],
 			"group": "test"
+		},
+		{
+			"label": "Run all tests",
+			"type": "shell",
+			"command": "mix test",
+			"isBackground": false,
+			"problemMatcher": [
+				"$elixir-mix-test"
+			],
+			"group": "test"
 		}
 	]
 }

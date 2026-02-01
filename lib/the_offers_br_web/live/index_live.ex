@@ -2,7 +2,6 @@ defmodule TheOffersBrWeb.IndexLive do
   use TheOffersBrWeb, :live_view
 
   alias Theoffersbr.Catalog
-  alias TheOffersBrWeb.Layouts
 
   @impl true
   def mount(_params, _session, socket) do
@@ -663,7 +662,7 @@ defmodule TheOffersBrWeb.IndexLive do
         </div>
       </div>
     <% end %>
-    </Layouts.app>
+    </TheOffersBrWeb.Layouts.app>
     """
   end
 end
